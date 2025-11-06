@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin | Yuva Sanghatan</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .admin{padding:24px 0}
+    .admin .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .admin .panel{border:1px solid #e6edff;padding:16px;border-radius:12px;background:#fff}
+    .list{margin-top:10px}
+  </style>
+  <script>
+    window.API_BASE = 'http://localhost:3000';
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand"><span class="brand-top">Yuva Admin</span></div>
+      <nav class="menu"><a href="../index.html">Website</a></nav>
+    </div>
+  </header>
+
+  <main class="admin">
+    <div class="container">
+      <h1>Admin पॅनल</h1>
+      <div class="grid">
+        <section class="panel">
+          <h2>गॅलरी अपलोड</h2>
+          <form id="uploadForm">
+            <input type="file" name="image" accept="image/*" required>
+            <input type="text" name="alt" placeholder="Alt text (optional)">
+            <button class="btn btn-primary" type="submit">अपलोड</button>
+          </form>
+          <div id="galleryPreview" class="gallery-grid" style="margin-top:12px"></div>
+        </section>
+        <section class="panel">
+          <h2>नवीन कार्यक्रम</h2>
+          <form id="eventForm">
+            <input type="text" name="title" placeholder="शीर्षक" required>
+            <input type="text" name="month" placeholder="महिना (उदा. डिसेंबर)">
+            <textarea name="desc" rows="3" placeholder="वर्णन"></textarea>
+            <button class="btn btn-primary" type="submit">जोडा</button>
+          </form>
+          <div id="eventsPreview" class="timeline" style="margin-top:12px"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const API = window.API_BASE || 'http://localhost:3000';
+    async function fetchJSON(url, opts){
+      const res = await fetch(url, opts);
+      if(!res.ok) throw new Error(await res.text());
+      return res.json();
+    }
+    function renderGallery(items){
+      const wrap = document.getElementById('galleryPreview');
+      wrap.innerHTML='';
+      items.forEach(it=>{
+        const fig = document.createElement('figure'); fig.className='gallery-item';
+        const img = document.createElement('img'); img.className='gallery-img'; img.src = (it.url.startsWith('http')? it.url : API+it.url); img.loading='lazy'; img.alt=it.alt||''; fig.appendChild(img);
+        wrap.appendChild(fig);
+      });
+    }
+    function renderEvents(items){
+      const wrap = document.getElementById('eventsPreview'); wrap.innerHTML='';
+      items.forEach(ev=>{
+        const el = document.createElement('div'); el.className='tl-item';
+        el.innerHTML = '<div class="tl-dot"></div><div class="tl-content"><h3>'+(ev.title||ev.month||'कार्यक्रम')+'</h3><p>'+(ev.desc||'')+'</p></div>';
+        wrap.appendChild(el);
+      });
+    }
+    async function refresh(){
+      const g = await fetchJSON(API+'/api/gallery'); renderGallery(g.items||[]);
+      const e = await fetchJSON(API+'/api/events'); renderEvents(e.items||[]);
+    }
+    document.getElementById('uploadForm').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      await fetchJSON(API+'/api/gallery', { method:'POST', body: fd });
+      e.target.reset();
+      refresh();
+    });
+    document.getElementById('eventForm').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const form = new FormData(e.target);
+      const payload = { title: form.get('title'), month: form.get('month'), desc: form.get('desc') };
+      await fetchJSON(API+'/api/events', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+      e.target.reset();
+      refresh();
+    });
+    refresh();
+  </script>
+</body>
+</html>

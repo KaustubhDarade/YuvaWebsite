@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yuva Sanghatan | युवा संघटन</title>
+  <meta name="description" content="Yuva Sanghatan - समुदायासाठी कार्य, कार्यक्रमांना सहाय्य, आणि मराठी बांधवांसाठी उपक्रम.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-top">Yuva Sanghatan</span>
+        <span class="brand-sub">युवा संघटन</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+      <nav class="menu" id="menu">
+        <a href="index.html#home">मुख्यपृष्ठ</a>
+        <a href="about.html">आपण कोण</a>
+        <a href="activities.html">उपक्रम</a>
+        <a href="events.html">कार्यक्रम</a>
+        <a href="gallery.html">गॅलरी</a>
+        <a href="contact.html" class="btn btn-primary">सहयोग / संपर्क</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <div class="hero-media">
+            <img src="assets/img/hero/logo.jpg" alt="Yuva Sanghatan" class="hero-image">
+            <div class="hero-slider fullscreen" id="heroSlider" aria-label="Hero image slider">
+              <div class="slide active"><img src="assets/img/gallery/img1.jpg" alt="गॅलरी 1"></div>
+              <div class="slide"><img src="assets/img/gallery/img2.jpg" alt="गॅलरी 2"></div>
+              <div class="slide"><img src="assets/img/gallery/img3.jpg" alt="गॅलरी 3"></div>
+              <div class="slide"><img src="assets/img/gallery/img4.jpg" alt="गॅलरी 4"></div>
+              <div class="slide"><img src="assets/img/gallery/img5.jpg" alt="गॅलरी 5"></div>
+              <div class="slide"><img src="assets/img/gallery/img6.jpg" alt="गॅलरी 6"></div>
+              <button class="slider-btn prev" id="heroPrev" aria-label="Previous">‹</button>
+              <button class="slider-btn next" id="heroNext" aria-label="Next">›</button>
+              <div class="slider-dots" id="heroDots"></div>
+            </div>
+          </div>
+          <p>लहान पण परिणामकारक उपक्रमांद्वारे आमचा समुदाय अधिक सक्षम करण्याचा आमचा प्रयत्न.</p>
+          <div class="cta">
+            <a href="#work" class="btn btn-primary">अलीकडील काम</a>
+            <a href="contact.html" class="btn btn-outline">सहयोग करा</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <ul class="highlights">
+            <li>शैक्षणिक सहाय्य</li>
+            <li>आरोग्य शिबिरे</li>
+            <li>समुदाय स्वच्छता</li>
+            <li>कार्यक्रमांसाठी निधी</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mission">
+      <div class="container">
+        <h2>आमचे ध्येय</h2>
+        <p>मराठी बांधवांच्या सामाजिक, शैक्षणिक आणि सांस्कृतिक उन्नतीसाठी स्थानिक स्तरावर उपक्रम राबवणे आणि आवश्यक त्या ठिकाणी आर्थिक व स्वयंसेवी सहाय्य उपलब्ध करून देणे.</p>
+      </div>
+    </section>
+
+    <section class="section alt" id="activities">
+      <div class="container">
+        <h2>मुख्य उपक्रम</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>शैक्षणिक सहाय्य</h3>
+            <p>गरजू विद्यार्थ्यांना वह्या-पुस्तके, फी मदत आणि करिअर मार्गदर्शन.</p>
+          </div>
+          <div class="card">
+            <h3>आरोग्य शिबिरे</h3>
+            <p>फ्री चेकअप, रक्तदान, आणि जनजागृती मोहीमा.</p>
+          </div>
+          <div class="card">
+            <h3>समुदाय विकास</h3>
+            <p>स्वच्छता, वृक्षारोपण आणि सार्वजनिक ठिकाणे सुशोभीकरण.</p>
+          </div>
+          <div class="card">
+            <h3>सांस्कृतिक कार्यक्रम</h3>
+            <p>गणेशोत्सव, शिमगा, आणि स्थानिक कला-प्रदर्शनांना मदत.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="container">
+        <h2>अलीकडील काम</h2>
+        <div class="work-list">
+          <article class="work-item">
+            <h4>गाव स्वच्छता मोहीम</h4>
+            <p>५०+ स्वयंसेवकांच्या सहभागातून सार्वजनिक ठिकाणांची सफाई व प्लास्टिक-विरहित अभियान.</p>
+          </article>
+          <article class="work-item">
+            <h4>विद्यार्थी शैक्षणिक किट वाटप</h4>
+            <p>१०० विद्यार्थ्यांना किट्स, तसेच करिअर मार्गदर्शन सत्र.</p>
+          </article>
+          <article class="work-item">
+            <h4>रक्तदान शिबिर</h4>
+            <p>स्थानिक रुग्णालयांसोबत संयुक्त उपक्रम; ७५ युनिट रक्तदान.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section donate">
+      <div class="container donate-grid">
+        <div>
+          <h2>सहयोग करा</h2>
+          <p>आपल्या लहानशा मदतीने मोठा बदल घडू शकतो. आर्थिक मदत, वस्तू दान किंवा स्वयंसेवक म्हणून सहभागी व्हा.</p>
+          <a href="contact.html" class="btn btn-primary">संपर्क / देणगी</a>
+        </div>
+        <div class="donate-box">
+          <p><strong>UPI / बँक तपशील</strong></p>
+          <p>UPI: yuva@upi</p>
+          <p>बँक: Yuva Sanghatan Trust, A/C 1234567890, IFSC ABCD0123456</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <h2>संपर्क</h2>
+          <p>ईमेल: contact@yuva.org.in</p>
+          <p>फोन: +91-90000 00000</p>
+          <p>पत्ता: आडवली,लांजा,रत्नागिरी</p>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('धन्यवाद! आम्हाला आपला संदेश प्राप्त झाला.');">
+          <input type="text" placeholder="नाव" required>
+          <input type="email" placeholder="ईमेल" required>
+          <textarea rows="4" placeholder="संदेश" required></textarea>
+          <button type="submit" class="btn btn-primary">पाठवा</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand brand-footer">
+          <span class="brand-top">Yuva Sanghatan</span>
+          <span class="brand-sub">युवा संघटन</span>
+        </div>
+        <p>समुदायासाठी, मराठीसाठी.</p>
+      </div>
+      <div class="footer-links">
+        <a href="about.html">आपण कोण</a>
+        <a href="activities.html">उपक्रम</a>
+        <a href="events.html">कार्यक्रम</a>
+        <a href="gallery.html">गॅलरी</a>
+        <a href="contact.html">संपर्क</a>
+      </div>
+    </div>
+    <div class="container copyright">© <span id="year"></span> Yuva Sanghatan</div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

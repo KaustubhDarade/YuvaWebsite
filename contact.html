@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>संपर्क / देणगी | Yuva Sanghatan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html"><span class="brand-top">Yuva Sanghatan</span><span class="brand-sub">युवक संघटन</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+      <nav class="menu" id="menu">
+        <a href="index.html">मुख्यपृष्ठ</a>
+        <a href="about.html">आपण कोण</a>
+        <a href="activities.html">उपक्रम</a>
+        <a href="events.html">कार्यक्रम</a>
+        <a href="gallery.html">गॅलरी</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container donate-grid">
+      <div>
+        <h1>संपर्क</h1>
+        <p>ईमेल: contact@yuva.org.in</p>
+        <p>फोन: +91-90000 00000</p>
+        <p>पत्ता: आडवली,लांजा रत्नागिरी</p>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('धन्यवाद! आम्हाला आपला संदेश प्राप्त झाला.');">
+          <input type="text" placeholder="नाव" required>
+          <input type="email" placeholder="ईमेल" required>
+          <textarea rows="4" placeholder="संदेश" required></textarea>
+          <button type="submit" class="btn btn-primary">पाठवा</button>
+        </form>
+      </div>
+      <div class="donate-box">
+        <h2>देणगी तपशील</h2>
+        <p>UPI: yuva@upi</p>
+        <p>बँक: Yuva Sanghatan Trust</p>
+        <p>खाते क्रमांक: 1234567890</p>
+        <p>IFSC: ABCD0123456</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container copyright">© <span id="year"></span> Yuva Sanghatan</div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+Open index.html in your browser. Replace placeholders (logo, colors, UPI/bank, contact details). Content is Marathi-first. Files: index.html, about.html, activities.html, events.html, gallery.html, contact.html, assets/css/style.css, assets/js/main.js.
