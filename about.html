@@ -6,6 +6,314 @@
   <title>आपण कोण | Yuva Sanghatan</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Team Section Styles */
+    .team-section {
+      margin: 2rem auto 4rem;
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 1.5rem;
+      box-sizing: border-box;
+    }
+    
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto 3rem;
+      border-bottom: 2px solid #f0f0f8;
+      max-width: 500px;
+      width: 100%;
+      position: relative;
+      padding: 0 1rem;
+    }
+    
+    .tab-btn {
+      padding: 0.75rem 1.75rem;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin: 0 0.25rem;
+      white-space: nowrap;
+      position: relative;
+      outline: none;
+    }
+    
+    .tab-btn:hover {
+      background: #f5f5f5;
+    }
+    
+    .tab-btn.active {
+      color: #1a237e;
+      font-weight: 600;
+    }
+    
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 3px;
+      background: #5c6bc0;
+      border-radius: 3px 3px 0 0;
+    }
+    
+    .tab-btn:hover {
+      color: #1a237e;
+      background: #f8f9ff;
+      border-radius: 6px 6px 0 0;
+    }
+    
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .team-section h2 {
+      text-align: center;
+      margin: 0 auto 2.5rem;
+      color: #1a237e;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      font-size: 2.25rem;
+      position: relative;
+      padding-bottom: 1rem;
+      max-width: 800px;
+      line-height: 1.3;
+    }
+    
+    .team-section h2:after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #1976d2;
+      margin: 0.5rem auto 0;
+    }
+    
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 2rem auto;
+      width: 100%;
+      justify-items: center;
+      padding: 1rem 0;
+    }
+    
+    @media (max-width: 1200px) {
+      .members-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .members-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .member-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      border: 1px solid #f0f0f0;
+      width: 100%;
+      max-width: 240px;
+    }
+    
+    .member-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      border-color: #e0e0ff;
+    }
+    
+    .member-card:hover .member-avatar {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .member-avatar {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f0f4f8 0%, #e0e8f0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    
+    .member-avatar svg {
+      width: 40px;
+      height: 40px;
+      color: #5c6bc0;
+    }
+    
+    .member-info h3 {
+      margin: 0 0 0.4rem;
+      color: #1a237e;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      font-size: 1rem;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+    
+    .member-info p {
+      margin: 0;
+      color: #5c6bc0;
+      font-size: 0.9rem;
+      font-weight: 500;
+      background: #f8f9ff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 2rem 0;
+    }
+    
+    .page-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .page-btn:hover {
+      background: #f5f5f5;
+    }
+    
+    .page-btn.active {
+      background: #1976d2;
+      color: white;
+      border-color: #1976d2;
+    }
+    
+    .page {
+      display: none;
+    }
+    
+    .page {
+      display: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .page.active {
+      display: grid;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @media (max-width: 1200px) {
+      .members-grid,
+      .page {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .members-grid,
+      .page {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .tabs {
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .members-grid,
+      .page {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 0.5rem;
+      }
+      
+      .team-section h2 {
+        font-size: 1.75rem;
+        padding: 0 1rem;
+      }
+      
+      .tab-btn {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+      }
+      
+      .member-card {
+        max-width: 100%;
+        padding: 1.25rem 0.75rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .members-grid,
+      .page {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin: 1rem auto;
+      }
+      
+      .team-section h2 {
+        font-size: 1.5rem;
+      }
+      
+      .tabs {
+        flex-direction: column;
+        align-items: center;
+        border: none;
+        gap: 0.5rem;
+      }
+      
+      .tab-btn {
+        width: 100%;
+        text-align: center;
+        border-radius: 6px;
+        margin: 0.25rem 0;
+        border: 1px solid #f0f0f0;
+      }
+      
+      .tab-btn.active::after {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="inner-page">
@@ -37,12 +345,204 @@
           <li>उत्तरदायित्व</li>
         </ul>
       </div>
+
+      <div class="container team-section">
+        <h2>आमचे पदाधिकारी आणि कार्यकर्ते</h2>
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="padadhikari">पदाधिकारी</button>
+          <button class="tab-btn" data-tab="karyakarni">कार्यकारणी सदस्य</button>
+        </div>
+        
+        <div class="tab-content active" id="padadhikari">
+          <div class="members-grid">
+            <!-- Office Bearer 1 -->
+            <div class="member-card">
+              <div class="member-avatar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div class="member-info">
+                <h3>श्री.मंगेश दरडे (आप्पा)</h3>
+                <p>अध्यक्ष</p>
+              </div>
+            </div>
+            
+            <!-- Office Bearer 2 -->
+            <div class="member-card">
+              <div class="member-avatar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div class="member-info">
+                <h3>श्री.किरण दरडे</h3>
+                <p>उपाध्यक्ष</p>
+              </div>
+            </div>
+            
+          
+            
+            <!-- Office Bearer 3 -->
+            <div class="member-card">
+              <div class="member-avatar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div class="member-info">
+                <h3>श्री.केतन माळी</h3>
+                <p>खजिनदार</p>
+              </div>
+            </div>
+            
+            <!-- Office Bearer 4 -->
+            <div class="member-card">
+              <div class="member-avatar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div class="member-info">
+                <h3>श्री.प्रसाद दरडे</h3>
+                <p>सहखजिनदार</p>
+              </div>
+            </div>
+              <!-- Office Bearer 5 -->
+            <div class="member-card">
+              <div class="member-avatar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div class="member-info">
+                <h3>कु.राहुल दरडे</h3>
+                <p>सचिव</p>
+              </div>
+            </div>
+            <!-- Office Bearer 6 -->
+            <div class="member-card">
+              <div class="member-avatar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div class="member-info">
+                <h3>श्री.जयदीप टूल</h3>
+                <p>कार्याध्यक्ष</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tab-content" id="karyakarni">
+          <div class="members-grid">
+            <!-- All Karyakarni members will be displayed here -->
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer class="site-footer">
       <div class="container copyright">© <span id="year"></span> Yuva Sanghatan</div>
     </footer>
   </div>
-  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Tab functionality
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from all buttons and contents
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+          
+          // Add active class to clicked button and corresponding content
+          btn.classList.add('active');
+          const tabId = btn.getAttribute('data-tab');
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
+      
+
+      // Generate Karyakarni member cards
+      const karyakarniMembers = [
+        { name: 'श्री. वैभव दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'श्री. विजय दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. अनिकेत दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'श्री. अमित टूल', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. सुनील दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'श्री. अमित दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. संतोष मांडवकर', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. अमोल महादे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. रामदास दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. जगदीश दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. प्रशांत दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'श्री. आकाश महादे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. गौरव दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. रोशन दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. कौस्तुभ दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. अविनाश दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'श्री. चेतन दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. ऋषिकेश दुडये', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. प्रथमेश महादे', role: 'कार्यकारणी सदस्य' },
+        { name: 'श्री. वैभव भितळे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. अंकित दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. दीपेश दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. चंदन दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. ओंकार दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. कुणाल दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. आर्यन टाकले', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. अभिषेक दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. राज महादे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. आर्यन दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. राज दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. साईराज दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. ओंकार दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. सर्वेश दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'श्री. प्रसाद दरडे', role: 'कार्यकारणी सदस्य' },
+        { name: 'कु. गौरव सांडीम', role: 'कार्यकारणी सदस्य' }
+      ];
+
+      // Function to generate member card HTML
+      function createMemberCard(member) {
+        return `
+          <div class="member-card">
+            <div class="member-avatar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <div class="member-info">
+              <h3>${member.name}</h3>
+              <p>${member.role}</p>
+            </div>
+          </div>
+        `;
+      }
+
+      // Populate Karyakarni members
+      const karyakarniContainer = document.querySelector('#karyakarni .members-grid');
+      if (karyakarniContainer) {
+        let membersHTML = '';
+        karyakarniMembers.forEach(member => {
+          membersHTML += createMemberCard(member);
+        });
+        karyakarniContainer.innerHTML = membersHTML;
+      }
+      
+      // Set current year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+  </script>
 </body>
 </html>
